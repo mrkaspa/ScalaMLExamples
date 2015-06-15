@@ -17,6 +17,7 @@ object LinearRegressionWithMinimizer extends App {
   val X1 = DenseMatrix.horzcat(DenseMatrix.ones[Double](X.rows, 1), X)
 
   val f = new DiffFunction[DenseVector[Double]] {
+    //calculates J and theta
     def calculate(theta: DenseVector[Double]) = {
       val m = y.rows
       val h = X1 * theta.asDenseMatrix.t
@@ -30,6 +31,8 @@ object LinearRegressionWithMinimizer extends App {
   val lbfgs = new LBFGS[DenseVector[Double]](maxIter = 1000, m = 5)
 
   val initialTheta = DenseVector(0.0, 0.0)
+
+  //minimize theta using the LBFGS algorithm
   val newTheta = lbfgs.minimize(f, initialTheta)
 
   println(s"newTheta >> $newTheta")
