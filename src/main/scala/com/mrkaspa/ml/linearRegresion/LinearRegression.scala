@@ -1,4 +1,4 @@
-package com.mrkaspa.ml.ex1
+package com.mrkaspa.ml.linearRegresion
 
 import java.io.File
 

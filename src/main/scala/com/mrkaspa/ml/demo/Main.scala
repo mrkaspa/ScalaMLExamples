@@ -29,9 +29,16 @@ object Main extends App {
   val xx = DenseMatrix.zeros[Int](5, 5)
   val yy = DenseMatrix((1, 1), (2, 2), (3, 3), (4, 4), (5, 5))
 
+  val inverse = inv(DenseMatrix((1,1), (2,3)))
+
   xx(::, 1) := DenseVector(1, 2, 3, 4, 5)
 
   xx(1, ::) := DenseVector(1, 2, 3, 4, 5).t
+
+  println("inverse >> ")
+  println(inverse)
+
+  println("eye " + DenseMatrix.eye[Double](3))
 
   println(xx)
 

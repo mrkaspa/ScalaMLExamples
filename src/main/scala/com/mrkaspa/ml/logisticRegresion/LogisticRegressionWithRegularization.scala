@@ -1,4 +1,4 @@
-package com.mrkaspa.ml.ex2
+package com.mrkaspa.ml.logisticRegresion
 
 import java.io.File
 
