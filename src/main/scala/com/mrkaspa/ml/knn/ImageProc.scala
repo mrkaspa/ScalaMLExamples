@@ -26,7 +26,7 @@ object ImageProc extends KNN with App {
     DenseVector[Double](bigArray)
   }
 
-  def trainingMat(dir: String): (MDouble, Array[Double]) = {
+  def trainingMat(path: String): (MDouble, Array[Double]) = {
     val dir = new File(getClass.getResource(path).getFile)
     val files = dir.listFiles()
     val labels = scala.collection.mutable.MutableList[Double]()
@@ -49,9 +49,9 @@ object ImageProc extends KNN with App {
     val dir = new File(getClass.getResource(testPath).getFile)
     val files = dir.listFiles()
     val errCount = files.foldLeft(0) { (acc, file) =>
-      if(testKNN(file)) acc else acc + 1
+      if (testKNN(file)) acc else acc + 1
     }
-    (errCount, errCount/files.size.toDouble)
+    (errCount, errCount / files.size.toDouble)
   }
 
   val timestamp: Long = System.currentTimeMillis
@@ -64,4 +64,5 @@ object ImageProc extends KNN with App {
   val lastTimestamp: Long = System.currentTimeMillis
   println("elapsed time")
   println((lastTimestamp - timestamp) / 1000d)
+
 }
