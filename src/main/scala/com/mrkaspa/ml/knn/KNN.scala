@@ -31,18 +31,20 @@ trait KNN {
     val (res, _) = mapAcc.foldLeft((0.0, 0)) { (t, curr) => if (t._2 > curr._2) t else curr }
     res.toInt
   }
-}
 
-object KNN extends KNN with App {
-  val file = new File(getClass.getResource("/datingData.txt").getFile)
-  val csv = csvread(file, separator = '\t')
-  val mat = csv(::, 0 to 2)
-  val labels = csv(::, 3).toArray
-  val labelsMap = Map(3 -> "High", 2 -> "Medium", 1 -> "Low")
 
-  val input: MDouble = DenseMatrix(Array(1000.0, 2.0, 5.0))
+  object KNN extends KNN with App {
+    val file = new File(getClass.getResource("/datingData.txt").getFile)
+    val csv = csvread(file, separator = '\t')
+    val mat = csv(::, 0 to 2)
+    val labels = csv(::, 3).toArray
+    val labelsMap = Map(3 -> "High", 2 -> "Medium", 1 -> "Low")
 
-  val res = classify(input, mat, labels, 5)
-  println(s"solucion => ${labelsMap(res)}")
+    val input: MDouble = DenseMatrix(Array(1000.0, 2.0, 5.0))
+
+    val res = classify(input, mat, labels, 5)
+    println(s"solucion => ${labelsMap(res)}")
+
+  }
 
 }
